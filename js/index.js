@@ -1,7 +1,5 @@
 var startTime = Date.now() + 2000;
 
-var isDragging = false;
-
 var minimizedRadius = 12,
 	expandedRadius = 128;
 
@@ -89,8 +87,6 @@ function init() {
 		.enter().append("circle")
 			.attr("fill", thumbnailPatternUrl)
 			.attr("class", "node")
-			.on("mousedown", function() { isDragging = true; })
-			.on("mouseup", function() { isDragging = false; })
 			.call(updateRadii)
 			.call(force.drag);
 		
@@ -131,7 +127,7 @@ function updateRadii(selection) {
 }
 
 function expandNode(id) {
-	if (Date.now() > startTime && id != expandedNode.id && !isDragging) {
+	if (Date.now() > startTime && id != expandedNode.id) {
 		expandedNode.expanded = false;
 		expandedNode = nodes[id];
 		expandedNode.expanded = true;
@@ -145,6 +141,5 @@ function expandNode(id) {
 }
 
 function hoverInfo() {
-	console.log(this.getAttribute("data-skd-proj-id"));
 	expandNode(this.getAttribute("data-skd-proj-id"));
 }
