@@ -59,9 +59,14 @@ section ul li {
 	white-space: nowrap;
 }
 
-section ul li:nth-child(2):before {
+section ul li:before {
 	margin: 0 -1px 0 -1px;
 	content: "| ";
+}
+
+section ul li:nth-child(1):before {
+	margin: 0;
+	content: "";
 }
 
 #widget {
